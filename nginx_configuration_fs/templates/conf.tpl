@@ -254,9 +254,10 @@ server {
         proxy_connect_timeout       {{ backend_combination[ "proxy_connect_timeout" ] }};
         proxy_read_timeout          {{ backend_combination[ "proxy_read_timeout" ] }};
 
-        proxy_set_header	Host 		$host:$server_port;
-        proxy_set_header    	X-Real-IP       $remote_addr;
-        proxy_set_header    	X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header	Host 		  $host:$server_port;
+        proxy_set_header    	X-Real-IP         $remote_addr;
+        proxy_set_header        X-Forwarded-Host  $host
+        proxy_set_header    	X-Forwarded-For   $proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto {% if ssl_configuration %}https{% else %}http{% endif -%};
         proxy_hide_header   	X-Powered-By;
 
