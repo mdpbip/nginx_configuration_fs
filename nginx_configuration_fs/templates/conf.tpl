@@ -63,6 +63,8 @@ server {
 
     server_tokens 		off;
 
+    underscores_in_headers      on;
+
     {% for nameserver in resolver.nameservers -%}
     resolver 			{{ nameserver }};
     {% endfor -%}
